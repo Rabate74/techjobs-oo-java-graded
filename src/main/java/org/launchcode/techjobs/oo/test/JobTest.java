@@ -20,4 +20,21 @@ public class JobTest {
         assertNotEquals(job1.getId(), job2.getId());
     }
 
+    @Test
+    public void testJobConstructorSetsAllFields() {
+        Job testJob = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        assertEquals(testJob.getName(), "Product tester");
+        assertEquals(testJob.getEmployer().getValue(), "ACME");
+        assertEquals(testJob.getLocation().getValue(), "Desert");
+        assertEquals(testJob.getPositionType().getValue(), "Quality control");
+        assertEquals(testJob.getCoreCompetency().getValue(), "Persistence");
+
+        assertTrue(testJob.getName() instanceof String);
+        assertTrue(testJob.getEmployer() instanceof Employer);
+        assertTrue(testJob.getLocation() instanceof Location);
+        assertTrue(testJob.getPositionType() instanceof PositionType);
+        assertTrue(testJob.getCoreCompetency() instanceof CoreCompetency);
+
+    }
+
 }
